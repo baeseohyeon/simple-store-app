@@ -1,5 +1,6 @@
-package com.baechu.cache;
+package com.cache.baechu.store;
 
+import com.cache.baechu.datastructure.DoubleLinkedList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -49,14 +50,14 @@ public class MyCacheStore<K, V> extends CacheStore<K, V> {
     }
 
     @Override
-    public synchronized void deleteByLRU() {
+    public void deleteByLRU() {
         if (map.size() >= capacity) {
             map.remove(nodes.deleteByLRU());
         }
     }
 
     @Override
-    public synchronized Set<Entry<K, V>> findAll() {
+    public Set<Entry<K, V>> findAll() {
         return map.entrySet();
     }
 }

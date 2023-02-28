@@ -1,4 +1,4 @@
-package com.baechu.cache;
+package com.cache.baechu.datastructure;
 
 public class DoubleLinkedList<K> {
 
