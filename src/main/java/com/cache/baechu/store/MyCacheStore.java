@@ -21,7 +21,7 @@ public class MyCacheStore<K, V> extends CacheStore<K, V> {
     }
 
     @Override
-    public synchronized void put(K key, V value) {
+    public void put(K key, V value) {
         if (map.containsKey(key)) {
             nodes.moveToTail(key);
             return;
@@ -32,19 +32,19 @@ public class MyCacheStore<K, V> extends CacheStore<K, V> {
     }
 
     @Override
-    public synchronized V get(K key) {
+    public V get(K key) {
         nodes.moveToTail(key);
         return map.get(key);
     }
 
     @Override
-    public synchronized V remove(K key) {
+    public V remove(K key) {
         nodes.deleteByKey(key);
         return map.remove(key);
     }
 
     @Override
-    public synchronized void clear() {
+    public void clear() {
         map.clear();
         nodes.clear();
     }
