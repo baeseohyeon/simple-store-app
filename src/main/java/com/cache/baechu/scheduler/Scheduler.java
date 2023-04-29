@@ -22,8 +22,8 @@ public class Scheduler<K> {
         map.put(key, map.getOrDefault(key, 0) + 1);
     }
 
-    public Integer get(K key) {
-        return map.getOrDefault(key, 0);
+    public boolean isExpired(K key) {
+        return map.getOrDefault(key, 0) > 0;
     }
 
     public void remove(K key) {
@@ -34,7 +34,7 @@ public class Scheduler<K> {
         map.clear();
     }
 
-    public void updateTTL(K key) {
+    public void updateTTLOf(K key) {
         if (map.containsKey(key)) {
             map.put(key, map.get(key) - 1);
         }
