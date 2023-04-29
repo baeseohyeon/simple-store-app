@@ -1,18 +1,17 @@
 package com.cache.baechu.cache;
 
-import com.cache.baechu.datastructure.DoubleLinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public abstract class Cache<K,V> {
+public abstract class Cache<K, V> {
 
     protected final Map<K, V> map;
-    protected final DoubleLinkedList<K> nodes;
+    protected final int capacity;
 
-    protected Cache(Map<K, V> map, DoubleLinkedList<K> nodes) {
+    protected Cache(Map<K, V> map, int capacity) {
         this.map = map;
-        this.nodes = nodes;
+        this.capacity = capacity;
     }
 
     public abstract void put(K key, V value);

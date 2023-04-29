@@ -8,16 +8,16 @@ import java.util.Set;
 
 public class LRUCache<K, V> extends Cache<K, V> {
 
-    private final int capacity;
+    private final DoubleLinkedList<K> nodes;
 
     public LRUCache() {
-        super(new HashMap<>(), new DoubleLinkedList<>());
-        capacity = 5;
+        super(new HashMap<>(), 5);
+        nodes = new DoubleLinkedList<>();
     }
 
-    public LRUCache(int capacity, Map<K, V> map, DoubleLinkedList<K> nodes) {
-        super(map, nodes);
-        this.capacity = capacity;
+    public LRUCache(Map<K, V> map, int capacity) {
+        super(map, capacity);
+        this.nodes = new DoubleLinkedList<>();
     }
 
     @Override
