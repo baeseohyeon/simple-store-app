@@ -81,4 +81,22 @@ public class DoubleLinkedList<K> {
         head = null;
         tail = null;
     }
+
+    public int size() {
+        int size = 0;
+        Node<K> now = head;
+        while (now != null) {
+            now = now.next;
+            size++;
+        }
+        return size;
+    }
+
+    public Node<K> getLeastRecentlyUsed() {
+        return head;
+    }
+
+    public Node<K> getMostRecentlyUsed() {
+        return tail;
+    }
 }
