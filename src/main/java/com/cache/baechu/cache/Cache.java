@@ -1,16 +1,16 @@
-package com.cache.baechu.store;
+package com.cache.baechu.cache;
 
 import com.cache.baechu.datastructure.DoubleLinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public abstract class CacheStore<K,V> {
+public abstract class Cache<K,V> {
 
     protected final Map<K, V> map;
     protected final DoubleLinkedList<K> nodes;
 
-    protected CacheStore(Map<K, V> map, DoubleLinkedList<K> nodes) {
+    protected Cache(Map<K, V> map, DoubleLinkedList<K> nodes) {
         this.map = map;
         this.nodes = nodes;
     }

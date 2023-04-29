@@ -7,7 +7,7 @@ public class DoubleLinkedList<K> {
 
     public void add(K key) {
         Node<K> newNode = new Node<>(key);
-        if (head == null) { //처음 캐시에 저장
+        if (head == null) {
             head = newNode;
             tail = newNode;
             return;
@@ -19,9 +19,9 @@ public class DoubleLinkedList<K> {
 
     public K deleteByLRU() {
         K deletedKey = head.key;
-        if (head == tail) { //노드가 하나
+        if (head == tail) {
             clear();
-        } else { //노드가 두개 이상
+        } else {
             head.next.prev = null;
             head = head.next;
         }
@@ -30,13 +30,13 @@ public class DoubleLinkedList<K> {
 
     public void moveToTail(K key) {
         Node<K> findNode = findByKey(key);
-        if (findNode == tail) { //이미 최근에 사용
+        if (findNode == tail) {
             return;
         }
-        if (findNode == head) { //제일 오래전에 사용
+        if (findNode == head) {
             head.next.prev = null;
             head = head.next;
-        } else { //중간 노드
+        } else {
             findNode.next.prev = findNode.prev;
             findNode.prev.next = findNode.next;
         }
@@ -59,21 +59,20 @@ public class DoubleLinkedList<K> {
 
     public void deleteByKey(K key) {
         Node<K> findNode = findByKey(key);
-        if (findNode == head && findNode == tail) { //캐시에 하나만 저장되있으면
+        if (findNode == head && findNode == tail) {
             clear();
             return;
         }
-        if (findNode == head) { //머리 노드
+        if (findNode == head) {
             findNode.next.prev = null;
             head = findNode.next;
             return;
         }
-        if (findNode == tail) { //꼬리 노드
+        if (findNode == tail) {
             findNode.prev.next = null;
             tail = findNode.prev;
             return;
         }
-        //중간 노드
         findNode.prev.next = findNode.next;
         findNode.next.prev = findNode.prev;
     }

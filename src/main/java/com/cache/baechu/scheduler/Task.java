@@ -1,11 +1,11 @@
 package com.cache.baechu.scheduler;
 
-import com.cache.baechu.store.CacheStore;
+import com.cache.baechu.cache.Cache;
 import java.util.TimerTask;
 
 public class Task {
 
-    public static <K, V> TimerTask createTask(CacheStore<K, V> store, Scheduler<K> scheduler,
+    public static <K, V> TimerTask createTask(Cache<K, V> store, Scheduler<K> scheduler,
         K key) {
         return new TimerTask() {
             @Override
