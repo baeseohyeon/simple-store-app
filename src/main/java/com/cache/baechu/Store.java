@@ -1,16 +1,17 @@
-package com.cache.baechu.store;
+package com.cache.baechu;
 
 import com.cache.baechu.scheduler.Scheduler;
 import com.cache.baechu.scheduler.Task;
+import com.cache.baechu.cache.Cache;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class Cache<K, V> {
+public class Store<K, V> {
 
-    private final CacheStore<K, V> store;
+    private final Cache<K, V> store;
     private final Scheduler<K> scheduler;
 
-    public Cache(CacheStore<K, V> store, Scheduler<K> scheduler) {
+    public Store(Cache<K, V> store, Scheduler<K> scheduler) {
         this.store = store;
         this.scheduler = scheduler;
     }

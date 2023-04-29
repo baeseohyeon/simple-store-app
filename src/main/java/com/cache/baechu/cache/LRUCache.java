@@ -1,4 +1,4 @@
-package com.cache.baechu.store;
+package com.cache.baechu.cache;
 
 import com.cache.baechu.datastructure.DoubleLinkedList;
 import java.util.HashMap;
@@ -6,16 +6,16 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class MyCacheStore<K, V> extends CacheStore<K, V> {
+public class LRUCache<K, V> extends Cache<K, V> {
 
     private final int capacity;
 
-    public MyCacheStore() {
+    public LRUCache() {
         super(new HashMap<>(), new DoubleLinkedList<>());
         capacity = 5;
     }
 
-    public MyCacheStore(int capacity, Map<K, V> map, DoubleLinkedList<K> nodes) {
+    public LRUCache(int capacity, Map<K, V> map, DoubleLinkedList<K> nodes) {
         super(map, nodes);
         this.capacity = capacity;
     }
