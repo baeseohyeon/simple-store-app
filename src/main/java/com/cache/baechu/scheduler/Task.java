@@ -10,12 +10,11 @@ public class Task {
         return new TimerTask() {
             @Override
             public void run() {
-                scheduler.updateTTL(key);
-                if (scheduler.get(key) > 0) {
-                    return;
+                scheduler.updateTTLOf(key);
+                if (scheduler.isExpired(key)) {
+                    store.remove(key);
+                    scheduler.remove(key);
                 }
-                store.remove(key);
-                scheduler.remove(key);
             }
         };
     }
